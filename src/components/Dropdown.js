@@ -28,10 +28,11 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
       }
       setIsOpen(false);
     };
-    console.log('hola');
     document.body.addEventListener('click', onBodyClick, { capture: true });
 
-    return (document.body.removeEventListener('click', onBodyClick, { capture: true }));
+    return () => {
+      document.body.removeEventListener('click', onBodyClick, { capture: true })
+    };
 
   }, []);
 
